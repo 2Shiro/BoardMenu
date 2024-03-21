@@ -97,6 +97,29 @@ public class MenuController {
 	
 	// -------------------------------------------------------------------
 	
+	@RequestMapping("/UpdateForm")
+	public String updateForm() {
+		
+		return "menus/update";
+	}
+	
+	@RequestMapping("/Update")
+	@ResponseBody
+	public String update( MenuVo menuVo, Model model ) {
+		
+		// 삭제
+		menuMapper.updateMenu( menuVo );
+		
+		String html = "<script>";
+		html += "alert('수정되었습니다');";
+		html += "location.href='/Menus/List';";
+		html += "</script>";
+		return html;
+	}
+	
+	
+	// -------------------------------------------------------------------
+	
 	/*
 	// 메뉴삭제
 	@RequestMapping("/Delete")

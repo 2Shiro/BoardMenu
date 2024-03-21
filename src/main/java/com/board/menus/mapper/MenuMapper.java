@@ -15,12 +15,13 @@ public interface MenuMapper {
 	// void insertMenu(String menu_id, String menu_name, int menu_seq);
 	// menuMapper.xml 에서 id="insertMenu" SQL 문을 찾아서 실행
 	void insertMenu( MenuVo menuVo );
+	
+	void insertMenuByName(MenuVo menuVo);
+	
+	void updateMenu(MenuVo menuVo);
 
 	void deleteMenu(MenuVo menuVo);
 
-	void insertMenuByName(MenuVo menuVo);
-
-	
 }
 
 
