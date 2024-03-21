@@ -39,7 +39,7 @@
 </head>
 <body>
 	<main>
-		<h2>메뉴 목록(수정)</h2>
+		<h2>메뉴 목록</h2>
 		<table>
 			<tr>
 				<td>MENU_ID</td>
@@ -58,8 +58,8 @@
 					<td>${menu.menu_id}</td>
 					<td>${menu.menu_name}</td>
 					<td>${menu.menu_seq}</td>
-					<td><a href="">수정</a></td>
-					<td><a href="">삭제</a></td>
+					<td><a href="#">수정</a></td>
+					<td><a href="/Menus/Delete?menu_id=${menu.menu_id}">삭제</a></td>
 				</tr>
 			</c:forEach>
 		</table>
