@@ -38,6 +38,8 @@ public class MenuController {
 		return "menus/write";  // /WEB-INF/views/ + menus/write + .jsp`
 	}
 	
+	// -------------------------------------------------------------------
+	
 	/*
 	// 메뉴 저장
 	// /Menus/Write?menu_id=MENU02&menu_name=JSP&menu_seq=2
@@ -69,6 +71,31 @@ public class MenuController {
 		html += "</script>";
 		return html;
 	}
+	
+	// -------------------------------------------------------------------
+	
+	// 이름으로만 추가
+	// /Menus/WriteForm2
+	@RequestMapping("/WriteForm2")
+	public String writeForm2() {
+		
+		return "menus/write2";
+	}
+	
+	@RequestMapping("/Write2")
+	@ResponseBody
+	public String write2( MenuVo menuVo, Model model ) {
+		
+		menuMapper.insertMenuByName( menuVo );
+		
+		String html = "<script>";
+		html += "alert('추가되었습니다');";
+		html += "location.href='/Menus/List';";
+		html += "</script>";
+		return html;
+	}
+	
+	// -------------------------------------------------------------------
 	
 	/*
 	// 메뉴삭제
