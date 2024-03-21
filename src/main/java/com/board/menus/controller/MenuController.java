@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.board.menus.domain.MenuVo;
 import com.board.menus.mapper.MenuMapper;
@@ -36,7 +37,8 @@ public class MenuController {
 	public   String   writeForm() {
 		return "menus/write";  // /WEB-INF/views/ + menus/write + .jsp`
 	}
-		
+	
+	/*
 	// 메뉴 저장
 	// /Menus/Write?menu_id=MENU02&menu_name=JSP&menu_seq=2
 	//@RequestMapping("/Menus/Write")
@@ -52,7 +54,23 @@ public class MenuController {
 		
 		return "redirect:/Menus/List"; 
 	}
+	*/
 	
+	@RequestMapping("/Write") 
+	@ResponseBody
+	public String write( MenuVo menuVo, Model model ) {
+		
+		// 추가
+		menuMapper.insertMenu( menuVo );
+		
+		String html = "<script>";
+		html += "alert('추가되었습니다');";
+		html += "location.href='/Menus/List';";
+		html += "</script>";
+		return html;
+	}
+	
+	/*
 	// 메뉴삭제
 	@RequestMapping("/Delete")
 	public String delete( MenuVo menuVo, Model model ) {
@@ -61,6 +79,21 @@ public class MenuController {
 		menuMapper.deleteMenu( menuVo );
 
 		return "redirect:/Menus/List";
+	}
+	*/
+	// 삭제완료 알림창 기능 추가
+	@RequestMapping("/Delete")
+	@ResponseBody
+	public String delete( MenuVo menuVo, Model model ) {
+		
+		// 삭제
+		menuMapper.deleteMenu( menuVo );
+		
+		String html = "<script>";
+		html += "alert('삭제되었습니다');";
+		html += "location.href='/Menus/List';";
+		html += "</script>";
+		return html;
 	}
 	
 	
