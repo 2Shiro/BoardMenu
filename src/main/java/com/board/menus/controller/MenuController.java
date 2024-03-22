@@ -97,17 +97,26 @@ public class MenuController {
 	
 	// -------------------------------------------------------------------
 	
+	// 수정
 	@RequestMapping("/UpdateForm")
-	public String updateForm() {
+	public String updateForm( MenuVo menuVo, Model model ) {
+		
+		String menu_id = menuVo.getMenu_id();
+		
+		// 수정할 데이터를 menu_id 조회
+		MenuVo menu = menuMapper.getMenu( menu_id );
+		
+		// 조회한 내용을 모델에 담는다
+		model.addAttribute( "menu", menu );
 		
 		return "menus/update";
 	}
 	
 	@RequestMapping("/Update")
 	@ResponseBody
-	public String update( MenuVo menuVo, Model model ) {
+	public String update( MenuVo menuVo ) {
 		
-		// 삭제
+		// 수정
 		menuMapper.updateMenu( menuVo );
 		
 		String html = "<script>";

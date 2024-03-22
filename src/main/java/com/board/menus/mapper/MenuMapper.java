@@ -22,6 +22,8 @@ public interface MenuMapper {
 
 	void deleteMenu(MenuVo menuVo);
 
+	MenuVo getMenu(String menu_id);
+
 }
 
 
